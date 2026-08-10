@@ -1,7 +1,6 @@
-# ColdChain Trace 
+# ColdChain Trace
 
 | Modular monitoring and treaceability platform for cold chain logistics.
-
 
 ## Overview
 
@@ -27,11 +26,11 @@ The objective is to demostrate how a common technological infraestructure can ad
 * REST API
 * Automated Testing
 
-## Project Status 
+## Project Status
 
 Day 1 / 21 -- Problem Definition and project Scope
 
-## Development Approach 
+## Development Approach
 
 The project will be developed and docummented over a period of three weeks.
 
@@ -55,4 +54,4 @@ Each development day will include:
 
 ## Disclaimer
 
-ColdChain Trace is an engineering prototype develop for experimentation, learning aand technical demostration. It is not intended to replace certified commercial cold-chain monitoring or regulatory systems.
+ColdChain Trace is an engineering prototype develop for experimentation, learning and technical demostration. It is not intended to replace certified commercial cold-chain monitoring or regulatory system
