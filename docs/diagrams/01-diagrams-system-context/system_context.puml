@@ -1,0 +1,28 @@
+@startuml ColdChainTrace_System_Context
+
+title ColdChainTrace - System Context
+
+left to right direction
+
+actor "Logistics Operator" as operator
+actor "System Administrator" as admin
+
+rectangle "ColdChainTrace" as system {
+    rectangle "Cold-chain monitoring\nand traceability platform" as core
+}
+
+rectangle "Instrumented Cold-Chain\nEnvironment" as cold
+
+rectangle "IoT Communication\nInfrastructure" as iot
+
+rectangle "Distributed Ledger /\nBlockchain Network" as blockchain
+
+operator --> core : Uses
+admin --> core : Configures
+
+cold --> iot : Sends environmental telemetry
+iot --> core : Delivers telemetry
+
+core --> blockchain : Registers integrity evidence
+
+@enduml
