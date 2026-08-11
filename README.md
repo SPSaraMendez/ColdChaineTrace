@@ -54,4 +54,4 @@ Each development day will include:
 
 ## Disclaimer
 
-ColdChain Trace is an engineering prototype develop for experimentation, learning and technical demostration. It is not intended to replace certified commercial cold-chain monitoring or regulatory system
+ColdChain Trace is an engineering prototype develop for experimentation, learning and technical demostration. It is not intended to replace certified commercial cold-chain monitoring or regulatory system.

@@ -1,0 +1,52 @@
+@startuml ColdChainTrace_System_Architecture
+
+title ColdChainTrace - System Architecture
+
+skinparam componentStyle rectangle
+
+package "Physical Environment" {
+    component "Temperature Sensor" as Sensor
+    component "ESP32\nEmbedded Controller" as ESP32
+}
+
+package "IoT Communication" {
+    component "MQTT Broker" as MQTT
+}
+
+package "ColdChainTrace Backend" {
+
+    component "ASP.NET Core API" as API
+
+    component "Telemetry Service" as Telemetry
+    component "Validation Engine" as Validation
+    component "Alert Service" as Alert
+    component "Traceability Service" as Traceability
+
+    database "SQL Server" as DB
+
+    component "Data Integrity Layer" as Integrity
+}
+
+package "Presentation" {
+    component "Monitoring Dashboard" as Dashboard
+}
+
+Sensor --> ESP32 : Temperature data
+ESP32 --> MQTT : MQTT telemetry
+MQTT --> API : Telemetry messages
+
+API --> Telemetry
+Telemetry --> Validation
+Validation --> Alert
+Telemetry --> DB
+Validation --> DB
+
+Telemetry --> Traceability
+Traceability --> Integrity
+Integrity --> DB
+
+DB --> Dashboard : Historical data
+Alert --> Dashboard : Alerts
+Telemetry --> Dashboard : Live data
+
+@enduml

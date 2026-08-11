@@ -1,0 +1,64 @@
+@startuml ColdChainTrace_Data_Flow
+
+title ColdChainTrace - Data Flow
+
+skinparam componentStyle rectangle
+skinparam shadowing false
+
+rectangle "Physical Environment" {
+
+    component "Temperature Sensor" as Sensor
+
+    component "ESP32\nEmbedded Node" as ESP32
+}
+
+rectangle "IoT Communication" {
+
+    component "MQTT Broker" as MQTT
+}
+
+rectangle "ColdChainTrace Backend" {
+
+    component "Telemetry Ingestion" as Ingestion
+
+    component "Validation Engine" as Validation
+
+    component "Alert Service" as Alerts
+
+    component "Traceability Service" as Traceability
+
+    database "SQL Server" as Database
+
+    component "Data Integrity Layer" as Integrity
+}
+
+rectangle "Monitoring" {
+
+    component "Dashboard" as Dashboard
+}
+
+Sensor --> ESP32 : 1. Temperature measurement
+
+ESP32 --> MQTT : 2. Publish telemetry
+
+MQTT --> Ingestion : 3. Receive telemetry
+
+Ingestion --> Validation : 4. Validate reading
+
+Validation --> Database : 5. Store reading
+
+Validation --> Alerts : 6. Generate alert\nif threshold is violated
+
+Ingestion --> Traceability : 7. Create traceability record
+
+Traceability --> Integrity : 8. Generate integrity proof
+
+Integrity --> Database : 9. Store integrity data
+
+Database --> Dashboard : 10. Historical telemetry
+
+Alerts --> Dashboard : 11. Alerts
+
+Ingestion --> Dashboard : 12. Live telemetry
+
+@enduml
