@@ -1,0 +1,58 @@
+@startuml ColdChainTrace_Hardware_Architecture
+
+title ColdChainTrace - Hardware Architecture
+
+skinparam componentStyle rectangle
+skinparam shadowing false
+
+rectangle "Refrigerated Environment" {
+
+    component "Thermocouple\nTemperature Sensor" as Thermocouple
+
+    component "Sensor Mount" as Mount
+
+    Thermocouple -[hidden]-> Mount
+}
+
+rectangle "Embedded Monitoring Node" {
+
+    component "Temperature\nInterface" as Interface
+
+    component "ESP32\nMicrocontroller" as ESP32
+
+    component "Local Storage\n(Optional)" as Storage
+
+    component "Status LED" as LED
+}
+
+rectangle "Power System" {
+
+    component "DC Power Supply" as Power
+
+    component "Voltage Regulation" as Regulator
+}
+
+rectangle "Connectivity" {
+
+    component "Wi-Fi" as WiFi
+
+    component "MQTT" as MQTT
+}
+
+Thermocouple --> Interface : Analog / sensor signal
+
+Interface --> ESP32 : Temperature data
+
+Power --> Regulator : DC input
+
+Regulator --> ESP32 : Regulated power
+
+ESP32 --> LED : System status
+
+ESP32 --> Storage : Local buffering
+
+ESP32 --> WiFi : Wireless telemetry
+
+WiFi --> MQTT : MQTT connection
+
+@enduml
