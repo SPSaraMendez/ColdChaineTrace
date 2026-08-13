@@ -26,8 +26,6 @@ The objective is to demostrate how a common technological infraestructure can ad
 * REST API
 * Automated Testing
 
-
-
 ### Engineering Log
 
 | Day    | Focus                     | Main Deliverables                                                                                  | Status      |
@@ -59,6 +57,8 @@ The objective is to demostrate how a common technological infraestructure can ad
 Day 1 / 21 -- Completed
 
 Day 2 / 21 -- Completed
+
+Day 3 / 21 -- Completed
 
 ## Development Approach
 
